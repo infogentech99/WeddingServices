@@ -1,0 +1,104 @@
+{
+    "events": [
+        {
+            "id": 1,
+            "EventName": "Sarah & John's Wedding",
+            "EventDate": "2024-06-20",
+            "EventTime": "Evening",
+            "Description": "Join us in celebrating the union of Sarah and John in a beautiful garden ceremony.",
+            "Location": "Rose Garden Villa",
+            "Contact": "+255 623 216 660",
+            "category": "ceremony"
+        },
+        {
+            "id": 2,
+            "EventName": "Maria & David's Reception",
+            "EventDate": "2024-06-22",
+            "EventTime": "Evening",
+            "Description": "An elegant evening reception celebrating the marriage of Maria and David.",
+            "Location": "Grand Hotel Ballroom",
+            "Contact": "+255 623 216 660",
+            "category": "reception"
+        },
+        {
+            "id": 3,
+            "EventName": "Anna & James Wedding Ceremony",
+            "EventDate": "2024-07-15",
+            "EventTime": "Morning",
+            "Description": "A traditional ceremony uniting Anna and James in marriage.",
+            "Location": "St. Mary's Cathedral",
+            "Contact": "+255 623 216 660",
+            "category": "ceremony"
+        },
+        {
+            "id": 4,
+            "EventName": "Emma & Michael's Beach Wedding",
+            "EventDate": "2024-07-20",
+            "EventTime": "Sunset",
+            "Description": "A romantic beach wedding celebration for Emma and Michael.",
+            "Location": "Zanzibar Beach Resort",
+            "Contact": "+255 623 216 660",
+            "category": "ceremony"
+        },
+        {
+            "id": 5,
+            "EventName": "Grace & Thomas Reception",
+            "EventDate": "2024-08-05",
+            "EventTime": "Afternoon",
+            "Description": "Celebrating the beautiful union of Grace and Thomas with family and friends.",
+            "Location": "Paradise Gardens",
+            "Contact": "+255 623 216 660",
+            "category": "reception"
+        },
+        {
+            "id": 6,
+            "EventName": "Oliver & Sophia's Garden Wedding",
+            "EventDate": "2024-08-15",
+            "EventTime": "Morning",
+            "Description": "A charming garden wedding ceremony celebrating Oliver and Sophia's love story.",
+            "Location": "Botanical Gardens",
+            "Contact": "+255 623 216 660",
+            "category": "ceremony"
+        },
+        {
+            "id": 7,
+            "EventName": "Lucas & Lily Reception Party",
+            "EventDate": "2024-08-20",
+            "EventTime": "Evening",
+            "Description": "Join us for an evening of celebration honoring the marriage of Lucas and Lily.",
+            "Location": "Royal Palm Hotel",
+            "Contact": "+255 623 216 660",
+            "category": "reception"
+        },
+        {
+            "id": 8,
+            "EventName": "Ethan & Isabella Wedding",
+            "EventDate": "2024-09-01",
+            "EventTime": "Afternoon",
+            "Description": "Witness the beautiful ceremony of Ethan and Isabella as they begin their journey together.",
+            "Location": "Hilltop Chapel",
+            "Contact": "+255 623 216 660",
+            "category": "ceremony"
+        },
+        {
+            "id": 9,
+            "EventName": "William & Ava's Reception",
+            "EventDate": "2024-09-05",
+            "EventTime": "Evening",
+            "Description": "A glamorous evening reception celebrating the newlyweds William and Ava.",
+            "Location": "Luxury City Hotel",
+            "Contact": "+255 623 216 660",
+            "category": "reception"
+        },
+        {
+            "id": 10,
+            "EventName": "Henry & Charlotte Wedding Ceremony",
+            "EventDate": "2024-09-15",
+            "EventTime": "Morning",
+            "Description": "A beautiful morning ceremony uniting Henry and Charlotte in marriage.",
+            "Location": "Riverside Chapel",
+            "Contact": "+255 623 216 660",
+            "category": "ceremony"
+        }
+    ]
+}
