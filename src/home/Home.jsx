@@ -1,37 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { Calendar, Clock, MapPin, ChevronRight, Search } from 'lucide-react';
+import { Calendar, Clock, MapPin, ChevronRight, Search } from "lucide-react";
 
 export default function Home() {
-  const events = useLoaderData();
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const events = useLoaderData(); // Load events from static data
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const categories = ['all', 'upcoming', 'ceremony', 'reception', 'completed'];
+  const categories = ["all", "upcoming", "ceremony", "reception", "completed"];
 
   // Filter events based on search and category
-  const filteredEvents = events.filter(event => {
-    const matchesSearch = event.EventName.toLowerCase().includes(searchTerm.toLowerCase());
-    if (selectedCategory === 'all') return matchesSearch;
+  const filteredEvents = events.filter((event) => {
+    const matchesSearch = event.EventName.toLowerCase().includes(
+      searchTerm.toLowerCase()
+    );
+    if (selectedCategory === "all") return matchesSearch;
 
     const isUpcoming = new Date(event.EventDate) > new Date();
-    const isCeremony = event.category === 'ceremony';
-    const isReception = event.category === 'reception';
+    const isCeremony = event.category === "ceremony";
+    const isReception = event.category === "reception";
     const isCompleted = new Date(event.EventDate) < new Date();
 
     switch (selectedCategory) {
-      case 'upcoming': return matchesSearch && isUpcoming;
-      case 'ceremony': return matchesSearch && isCeremony;
-      case 'reception': return matchesSearch && isReception;
-      case 'completed': return matchesSearch && isCompleted;
-      default: return matchesSearch;
+      case "upcoming":
+        return matchesSearch && isUpcoming;
+      case "ceremony":
+        return matchesSearch && isCeremony;
+      case "reception":
+        return matchesSearch && isReception;
+      case "completed":
+        return matchesSearch && isCompleted;
+      default:
+        return matchesSearch;
     }
   });
 
   // Function to get a random local image
-  const getRandomImage = () => {
-    const randomNumber = Math.floor(Math.random() * 10) + 1; // 1 to 10
-    return `./${randomNumber}.jpg`; // Assuming images are in the root folder
+  const getEventImage = (eventId) => {
+    const imageNumber = ((eventId - 1) % 10) + 1; // Cycle through 1.jpg to 10.jpg
+    return `/${imageNumber}.jpg`; // Ensure images are in the public folder
   };
 
   return (
@@ -40,10 +47,12 @@ export default function Home() {
       <div className="relative overflow-hidden bg-white/5 backdrop-blur-lg pb-10">
         <div className="max-w-7xl mx-auto py-16 px-4">
           <div className="text-center">
-            <h1 className="text-5xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600 mb-4 break-words">
+            <h1 className="text-5xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600 mb-4">
               Wedding Management System
             </h1>
-            <p className="text-gray-600 text-xl mb-8">Creating Beautiful Wedding Memories</p>
+            <p className="text-gray-600 text-xl mb-8">
+              Creating Beautiful Wedding Memories
+            </p>
 
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto relative">
@@ -62,14 +71,15 @@ export default function Home() {
 
       {/* Category Pills */}
       <div className="flex justify-center gap-2 py-6">
-        {categories.map(category => (
+        {categories.map((category) => (
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
-            className={`px-6 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105
-              ${selectedCategory === category 
-                ? 'bg-rose-600 text-white shadow-lg' 
-                : 'bg-white text-gray-600 hover:bg-gray-50'}`}
+            className={`px-6 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 ${
+              selectedCategory === category
+                ? "bg-rose-600 text-white shadow-lg"
+                : "bg-white text-gray-600 hover:bg-gray-50"
+            }`}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
           </button>
@@ -79,7 +89,7 @@ export default function Home() {
       {/* Events Grid */}
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredEvents.map(event => (
+          {filteredEvents.map((event) => (
             <div
               key={event.id}
               className="group relative bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
@@ -87,7 +97,7 @@ export default function Home() {
               {/* Event Image */}
               <div className="relative h-48 overflow-hidden">
                 <img
-                  src={getRandomImage()}
+                  src={getEventImage(event.id)}
                   alt={event.EventName}
                   className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                 />
@@ -103,7 +113,9 @@ export default function Home() {
                 <h2 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-rose-600 transition-colors">
                   {event.EventName}
                 </h2>
-                <p className="text-gray-600 mb-4 line-clamp-2">{event.Description}</p>
+                <p className="text-gray-600 mb-4 line-clamp-2">
+                  {event.Description}
+                </p>
 
                 <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                   <div className="flex items-center gap-1">
@@ -117,7 +129,7 @@ export default function Home() {
                 </div>
 
                 <Link
-                  to={`/events`}
+                  to={`/events/${event.id}`}
                   className="inline-flex items-center gap-2 w-full justify-center bg-gradient-to-r from-rose-600 to-pink-600 text-white px-6 py-3 rounded-lg font-medium hover:from-rose-700 hover:to-pink-700 transition-all"
                 >
                   View Details <ChevronRight className="h-4 w-4" />
@@ -132,9 +144,6 @@ export default function Home() {
 }
 
 export const eventLoader = async () => {
-  const response = await fetch("http://localhost:3000/events");
-  if (!response.ok) {
-    throw Error("Could not fetch wedding events");
-  }
-  return response.json();
+  const eventsData = await import("../data/event.json"); // Import static data
+  return eventsData.events; // Return the events array
 };
